@@ -58,7 +58,7 @@ $(function () {
         }
         localStorage.setItem("token", res.token)
         layer.msg(res.message)
-        // location.href = '../../index.html'
+        location.href = '/index.html'
       }
     })
   })
