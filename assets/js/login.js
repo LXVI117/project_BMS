@@ -1,4 +1,10 @@
 $(function () {
+  //发起ajax之前预处理 url 
+  $.ajaxPrefilter(function (options) {
+    // Modify options, control originalOptions, store jqXHR, etc 
+    // console.log(options.url);
+    options.url = "http://ajax.frontend.itheima.net" + options.url
+  });
   //登录注册切换功能
   $('#goReg').on('click', function () {
     $(this).parents('.login').hide().siblings('.reg').show();
@@ -23,7 +29,7 @@ $(function () {
     e.preventDefault()
     $.ajax({
       method: 'POST',
-      url: 'http://ajax.frontend.itheima.net/api/reguser',
+      url: '/api/reguser',
       data: {
         username: $("#reg_form [name=username]").val(),
         password: $("#reg_form [name=password]").val()
@@ -43,7 +49,7 @@ $(function () {
     e.preventDefault()
     $.ajax({
       method: "POST",
-      url: "http://ajax.frontend.itheima.net/api/login",
+      url: "/api/login",
       data: $(".login").serialize(),
       success: function (res) {
         console.log(res);
@@ -52,9 +58,13 @@ $(function () {
         }
         localStorage.setItem("token", res.token)
         layer.msg(res.message)
-        location.href = '../../index.html'
+        location.href = '/index.html'
       }
     })
   })
 
 })
+
+// $(function () {
+//   console.log(123);
+// })
