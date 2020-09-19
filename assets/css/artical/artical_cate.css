@@ -15,7 +15,8 @@ body {
   /* padding: 15px; */
 }
 
-#add-alert {
+#add-form,
+#edit-form {
   padding-top: 15px;
   padding-right: 30px;
 }
